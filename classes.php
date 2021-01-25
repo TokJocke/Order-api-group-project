@@ -12,7 +12,16 @@ class Product {
 
 }
 
+class Order {
+    function __construct($date, $products){
+        $this->date = $date;
+        $this->products = $products;
+    }
 
+/*     function totalsum();
+    function totalProducts(); */
+
+}
 
 
 ?>
