@@ -91,6 +91,7 @@ async function placeOrder() {
     let cart = localStorage.getItem("cart")
     
     
+    
     /* localStorage.getItem("cart") */
     
     let date = new Date().toISOString().slice(0, 10) 
@@ -103,6 +104,10 @@ async function placeOrder() {
     const rendReq = await makeReq("./orderReciever.php", "POST", body)
 
     console.log(rendReq)
+
+    console.log(rendReq.products[0].name)
+ 
+    
 
 }
 

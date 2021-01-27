@@ -6,14 +6,21 @@ if(isset($_SERVER["REQUEST_METHOD"])) {
         
         require "./classes.php";
  
-        $cart = $_POST["cart"];     
+        session_start();
+
+        $cart = json_decode($_POST["cart"]);     
         $date = $_POST["date"]; 
 
-
-      
         $newOrder = new Order($date, $cart);
+        
+        $_SESSION["order"] = $newOrder;
+     
+        
 
         echo json_encode($newOrder);
+        
+        
+      /*   echo json_encode(unserialize($_SESSION["sign"])); */
 
     }
 }
