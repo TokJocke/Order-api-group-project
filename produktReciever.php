@@ -16,7 +16,9 @@ if(isset($_SERVER["REQUEST_METHOD"])) {
         
         $allProducts = array($dxracer, $secretlab, $hermanMiller);
          
+        /* $testOrder = array(array("product" => $hermanMiller, "quantity" => 3), array()); */
 
+        
 
 /* 
  
@@ -26,7 +28,7 @@ if(isset($_SERVER["REQUEST_METHOD"])) {
             return $product;
         }    */
         
-         echo json_encode($allProducts);
+        echo json_encode($allProducts);
   
     
  

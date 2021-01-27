@@ -7,15 +7,24 @@ class Product {
         $this->descr = $descr;
         $this->img = $img;
     }
-
-
-
 }
 
+
+class OrderItem {
+    function __construct($product, $quantity) {
+        $this->product = $product;
+        $this->quantity = $quantity;
+    }
+}
+
+
+
 class Order {
-    function __construct($date, $products){
+    function __construct($date, $orderItems){
+
+    
         $this->date = $date;
-        $this->products = $products;
+        $this->orderItems = $orderItems;
     }
 
 /*     function totalsum();

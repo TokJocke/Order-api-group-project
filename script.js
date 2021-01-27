@@ -66,10 +66,10 @@ async function addToCart(product) {
    
     if(localStorage.getItem("cart")) {
         productList = JSON.parse(localStorage.getItem("cart"))  
-    }
+    }/* 
     else {
         localStorage.setItem("cart", JSON.stringify(productList))
-    }
+    } */
    
     productList.push(product)
     localStorage.setItem("cart", JSON.stringify(productList))
@@ -90,8 +90,6 @@ async function placeOrder() {
     
     let cart = localStorage.getItem("cart")
     
-    
-    
     /* localStorage.getItem("cart") */
     
     let date = new Date().toISOString().slice(0, 10) 
@@ -102,6 +100,7 @@ async function placeOrder() {
     body.set("date", date) 
     
     const rendReq = await makeReq("./orderReciever.php", "POST", body)
+  
 
     console.log(rendReq)
 

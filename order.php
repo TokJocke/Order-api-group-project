@@ -17,11 +17,24 @@
 
            
  
-            
+        
+
+            foreach($myVar as $entry){
+                
+                foreach($entry as $value){
+                    print_r($value->name . "<br>" . $value->price . "<br>" . "<br>");
+                    
+                }
+                   
+            }
+
+
+
+
                 
     
             
-            foreach($myVar as $entry => $value){
+/*             foreach($myVar as $entry => $value){
                 
                 for($i = 0; $i < count($value); $i++){
                         
@@ -34,7 +47,7 @@
 
                 }
            
-            }  
+            }   */
         
                     
 
