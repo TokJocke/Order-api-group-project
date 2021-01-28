@@ -3,6 +3,7 @@ window.addEventListener("load", initSite())
 async function initSite() {
     await viewProducts()
     placeOrderBtn()
+
 }
 
 async function makeReq(path, method, body) {
@@ -61,18 +62,67 @@ async function cartBtn(parent, text, product) {
      
 }
 
+
+
+
+
+function qCounter() {
+    cartList = JSON.parse(localStorage.getItem("cart"))
+    let counter = 1
+    if(cartList) {
+
+        for(i = 0; i < cartList.length; i++) {
+            
+            if(cartList[i].product.name.length >= 1) {
+    
+                console.log(counter++)
+            }
+    
+        }
+
+    }
+   
+    return counter
+
+}
+
 async function addToCart(product) {
-    let productList = []
-   
-    if(localStorage.getItem("cart")) {
-        productList = JSON.parse(localStorage.getItem("cart"))  
-    }/* 
+    let cartList
+
+    let cart =  {
+        product: {
+            name: product.name,
+            price: product.price
+            
+        }, 
+        quantity: 1
+    }
+  
+    
+    if (localStorage.getItem("cart")) {
+        cartList = JSON.parse(localStorage.getItem("cart"))
+        
+            let findCartMatch = cartList.findIndex((cartItem) => { //matchar cartItem i cartList och retunerar index
+
+                return cartItem.product.name == cart.product.name
+
+            })
+
+            if (findCartMatch > -1) { //Första index är 0 vilket blir false, därför säger vi IF index > -1
+                cartList[findCartMatch].quantity++ //Ökar kvantitet med 1
+            }
+            else {
+                cartList.push(cart) //Om index mindre än 0 finns varan inte i listan, då läggs en ny till istället
+
+            }
+        
+    }
     else {
-        localStorage.setItem("cart", JSON.stringify(productList))
-    } */
-   
-    productList.push(product)
-    localStorage.setItem("cart", JSON.stringify(productList))
+        cartList = []
+        cartList.push(cart)
+    }
+  
+        localStorage.setItem("cart", JSON.stringify(cartList)) 
 
 }
 
@@ -88,26 +138,24 @@ async function placeOrderBtn() {
 
 async function placeOrder() {
     
-    let cart = localStorage.getItem("cart")
+    let cartList = localStorage.getItem("cart")
     
     /* localStorage.getItem("cart") */
     
+    if(cartList) {
+
     let date = new Date().toISOString().slice(0, 10) 
-    
-    
     let body = new FormData()
-    body.set("cart", cart)
+    body.set("cart", cartList)
     body.set("date", date) 
     
     const rendReq = await makeReq("./orderReciever.php", "POST", body)
-  
 
     console.log(rendReq)
+    }
 
-    console.log(rendReq.products[0].name)
  
     
 
 }
-
 

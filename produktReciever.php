@@ -20,14 +20,6 @@ if(isset($_SERVER["REQUEST_METHOD"])) {
 
         
 
-/* 
- 
-        foreach ($allProducts as $product) {
-            echo $product->name;
-            echo "<br>";
-            return $product;
-        }    */
-        
         echo json_encode($allProducts);
   
     
