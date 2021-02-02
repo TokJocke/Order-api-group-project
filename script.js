@@ -22,7 +22,7 @@ async function makeReq(path, method, body) {
 }
 
 async function viewProducts() {
-    const response = await makeReq("./produktReciever.php", "GET")
+    const response = await makeReq("/server/produktReciever.php", "GET")
     
     let prodCont = document.getElementById("produktBox")
 
@@ -63,28 +63,6 @@ async function cartBtn(parent, text, product) {
 }
 
 
-
-
-
-function qCounter() {
-    cartList = JSON.parse(localStorage.getItem("cart"))
-    let counter = 1
-    if(cartList) {
-
-        for(i = 0; i < cartList.length; i++) {
-            
-            if(cartList[i].product.name.length >= 1) {
-    
-                console.log(counter++)
-            }
-    
-        }
-
-    }
-   
-    return counter
-
-}
 
 async function addToCart(product) {
     let cartList
@@ -149,7 +127,8 @@ async function placeOrder() {
     body.set("cart", cartList)
     body.set("date", date) 
     
-    const rendReq = await makeReq("./orderReciever.php", "POST", body)
+    const rendReq = await makeReq("/server/orderReciever.php", "POST", body)
+
 
     console.log(rendReq)
     }

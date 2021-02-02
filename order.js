@@ -18,7 +18,7 @@ async function makeReq(path, method, body) {
 }
 
 async function showOrders() {
-    const getOrder = await makeReq("./orderReciever.php", "GET")
+    const getOrder = await makeReq("./server/orderReciever.php", "GET")
     
     for(i = 0; i < getOrder.length; i++) {
      

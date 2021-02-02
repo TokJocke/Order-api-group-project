@@ -1,7 +1,7 @@
 <?php 
   
   session_start();   
-  require "./classes.php";
+  require "./server/classes.php";
 
 
 if(isset($_SERVER["REQUEST_METHOD"])) {
@@ -44,6 +44,8 @@ if(isset($_SERVER["REQUEST_METHOD"])) {
       }
         $_SESSION["orders"] = serialize($orderList); 
         $orderList = unserialize($_SESSION["orders"]);    
+       
+       
         echo json_encode($orderList);       
 
     
