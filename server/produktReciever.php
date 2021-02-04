@@ -6,7 +6,7 @@ if(isset($_SERVER["REQUEST_METHOD"])) {
 
       
    
-         require "./server/classes.php";
+         require "C:\Hemsidor\skola\Systemutveckling kurs\php\Order-api-group-project\server\classes.php";
         
          
         

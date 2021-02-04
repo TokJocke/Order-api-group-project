@@ -27,8 +27,20 @@ class Order {
         $this->orderItems = $orderItems;
     }
 
-/*     function totalsum();
-    function totalProducts(); */
+    public function totalSum() {
+
+        $orderPrices = ["sdsds"];
+
+      
+
+        return json_encode($orderPrices);
+        
+    }
+    
+    
+    
+    
+   /*  function totalProducts();  */
 
 }
 

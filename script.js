@@ -127,7 +127,7 @@ async function placeOrder() {
     body.set("cart", cartList)
     body.set("date", date) 
     
-    const rendReq = await makeReq("/server/orderReciever.php", "POST", body)
+    const rendReq = await makeReq("./server/orderReciever.php", "POST", body)
 
 
     console.log(rendReq)

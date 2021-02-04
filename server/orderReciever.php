@@ -1,7 +1,7 @@
 <?php 
   
   session_start();   
-  require "./server/classes.php";
+  require "C:\Hemsidor\skola\Systemutveckling kurs\php\Order-api-group-project\server\classes.php";
 
 
 if(isset($_SERVER["REQUEST_METHOD"])) {
